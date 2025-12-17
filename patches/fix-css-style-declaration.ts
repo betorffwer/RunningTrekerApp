@@ -3,6 +3,7 @@
  * 
  * This patch must be loaded FIRST, before React Native Web import
  * It intercepts all attempts to set indexed properties on CSSStyleDeclaration
+ * Prevents errors when React Native Web tries to set numeric properties on style objects
  */
 
 if (typeof window !== 'undefined') {
