@@ -14,6 +14,7 @@ export default function HomeScreen() {
       </View>
       <Text style={styles.subtitle}>Отслеживайте свои пробежки с легкостью</Text>
       
+      {/* Navigation buttons container */}
       <View style={styles.buttonContainer}>
         <Link href="/tracker" asChild>
           <TouchableOpacity style={styles.button}>
