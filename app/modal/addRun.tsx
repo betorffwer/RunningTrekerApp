@@ -14,6 +14,7 @@ export default function AddRunModal() {
       return;
     }
 
+    // Create new run object with unique ID
     const newRun = {
       id: Date.now().toString(),
       distance: parseFloat(distance),
