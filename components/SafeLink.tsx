@@ -6,6 +6,7 @@ import { Platform, StyleSheet, View, ViewStyle } from 'react-native';
  * Safe wrapper for Link component that fixes
  * "Failed to set an indexed property [0] on 'CSSStyleDeclaration'"
  * on web platform by wrapping Link in View
+ * This prevents CSS style declaration errors on web
  */
 export function SafeLink(
   props: React.ComponentProps<typeof Link>
