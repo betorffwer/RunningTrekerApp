@@ -2,6 +2,7 @@
   "expo": {
     "name": "sport tracer",
     "slug": "mobile",
+    // App configuration for Expo
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
