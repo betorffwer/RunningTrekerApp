@@ -3,11 +3,13 @@ import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
 import { Platform, StyleSheet, View, ViewStyle } from 'react-native';
 
+// External link component with web platform compatibility
 export function ExternalLink(
   props: Omit<React.ComponentProps<typeof Link>, 'href'> & { href: string }
 ) {
   const { style, children, ...restProps } = props;
   
+  // Handle web platform differently
   if (Platform.OS === 'web') {
     const flattenedStyle = StyleSheet.flatten(style) as ViewStyle | undefined;
     return (
