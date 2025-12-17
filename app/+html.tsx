@@ -38,7 +38,7 @@ body {
     background-color: #000;
   }
 }
-/* Fix for Link components on web platform */
+/* Fix for Link components on web platform - remove default link styling */
 a {
   text-decoration: none;
   color: inherit;
