@@ -4,6 +4,7 @@ import { Link } from 'expo-router';
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
+// Home screen with welcome message and navigation buttons
 export default function HomeScreen() {
   return (
     <LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.container}>
