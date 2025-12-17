@@ -3,6 +3,7 @@ import { Platform, StyleSheet, TouchableOpacity } from 'react-native';
 
 import { Text, View } from '@/components/Themed';
 
+// 404 Not Found screen for invalid routes
 export default function NotFoundScreen() {
   return (
     <>
