@@ -6,6 +6,7 @@ import Colors from '@/constants/Colors';
 
 import { useColorScheme } from '@/components/useColorScheme';
 
+// Tab bar icon component for navigation
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>['name'];
