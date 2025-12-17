@@ -46,6 +46,7 @@ const calculateSpeed = (distance: number, time: number) => {
   return speed.toFixed(2).replace('.', ',');
 };
 
+// Main tracker screen component for displaying and managing runs
 export default function TrackerScreen() {
   const [runs, setRuns] = useState<Run[]>([]);
 
