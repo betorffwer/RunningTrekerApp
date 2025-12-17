@@ -7,6 +7,7 @@ export default function AddRunModal() {
   const [distance, setDistance] = useState('');
   const [time, setTime] = useState('');
 
+  // Validate and save new run entry
   const handleSave = async () => {
     if (!distance || !time || isNaN(parseFloat(distance)) || isNaN(parseInt(time, 10))) {
       Alert.alert('Ошибка', 'Пожалуйста, введите корректные данные.');
