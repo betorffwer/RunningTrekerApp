@@ -5,12 +5,14 @@ import { Link, useFocusEffect } from 'expo-router';
 import React, { useCallback, useState } from 'react';
 import { Alert, FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
+// Run data type definition
 type Run = {
   id: string;
   distance: number;
   time: number;
 };
 
+// Format seconds to readable time string (HH:MM:SS or MM:SS)
 const formatTime = (totalSeconds: number) => {
   if (isNaN(totalSeconds) || totalSeconds < 0) return '00:00';
 
@@ -27,6 +29,7 @@ const formatTime = (totalSeconds: number) => {
   return `${paddedMinutes}:${paddedSeconds}`;
 };
 
+// Calculate pace in minutes per kilometer
 const calculatePace = (distance: number, time: number) => {
   if (distance <= 0 || time <= 0) return "0' 0''";
   const paceInSecondsPerKm = time / distance;
@@ -35,6 +38,7 @@ const calculatePace = (distance: number, time: number) => {
   return `${paceMinutes}' ${paceSeconds}''`;
 };
 
+// Calculate average speed in km/h
 const calculateSpeed = (distance: number, time: number) => {
   if (distance <= 0 || time <= 0) return '0,00';
   const timeInHours = time / 3600;
@@ -45,6 +49,7 @@ const calculateSpeed = (distance: number, time: number) => {
 export default function TrackerScreen() {
   const [runs, setRuns] = useState<Run[]>([]);
 
+  // Load runs from AsyncStorage on screen focus
   const loadRuns = useCallback(async () => {
     try {
       const storedRuns = await AsyncStorage.getItem('runs');
@@ -62,6 +67,7 @@ export default function TrackerScreen() {
     }, [loadRuns])
   );
 
+  // Sort runs by pace (best = fastest, worst = slowest)
   const sortRuns = (criteria: 'best' | 'worst') => {
     const sortedRuns = [...runs].sort((a, b) => {
       const paceA = a.time / a.distance;
@@ -71,6 +77,7 @@ export default function TrackerScreen() {
     setRuns(sortedRuns);
   };
 
+  // Delete run with confirmation dialog
   const handleDelete = async (id: string) => {
     Alert.alert(
       'Удалить пробежку',
@@ -98,6 +105,7 @@ export default function TrackerScreen() {
     );
   };
 
+  // Render individual run item component
   const renderItem = ({ item }: { item: Run }) => (
     <View style={styles.runItem}>
       <View style={styles.runDataContainer}>
@@ -144,6 +152,7 @@ export default function TrackerScreen() {
         renderItem={renderItem}
         keyExtractor={item => item.id}
         contentContainerStyle={{ paddingBottom: 80 }}
+        // Empty state when no runs exist
         ListEmptyComponent={() => (
           <View style={styles.emptyContainer}>
             <Text style={styles.emptyText}>У вас пока нет пробежек.</Text>
@@ -151,6 +160,7 @@ export default function TrackerScreen() {
           </View>
         )}
       />
+      {/* Floating Action Button for adding new runs */}
       <Link href="/modal/addRun" asChild>
         <TouchableOpacity style={styles.fab}>
           <FontAwesome name="plus" size={24} color="#fff" />
